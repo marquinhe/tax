@@ -1,6 +1,7 @@
 package io.msalinas;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -16,6 +17,9 @@ public abstract class Payslip {
 	private double superAnnuation; 
 	private String date; 
 	
+	private int lowerLimit; 
+	private int taxPerDollar; 
+	
 	
 	public Payslip(String first, String last, int salary, double superAnnuation, String date) {
 		this.first = first;
@@ -25,7 +29,6 @@ public abstract class Payslip {
 	}
 	
 	abstract BigDecimal calculateTax();
-	abstract String calculatePeriod();
 	abstract BigDecimal totalNetIncome();
 	abstract BigDecimal totalSuperAnnuation();
 
@@ -68,6 +71,27 @@ public abstract class Payslip {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public int getLowerLimit() {
+		return lowerLimit;
+	}
+
+	public void setLowerLimit(int lowerLimit) {
+		this.lowerLimit = lowerLimit;
+	}
+
+	public int getTaxPerDollar() {
+		return taxPerDollar;
+	}
+
+	public void setTaxPerDollar(int taxPerDollar) {
+		this.taxPerDollar = taxPerDollar;
+	}
+	
+	public BigDecimal getGrossMontlyIncome(){
+		BigDecimal monthlyIncome= new BigDecimal (getSalary() /12);
+		return monthlyIncome.setScale(0, RoundingMode.HALF_UP);
 	}
 
 }
