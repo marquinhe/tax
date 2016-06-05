@@ -8,6 +8,7 @@ public class TaxTier0 extends Payslip {
 	
 	public TaxTier0(String first, String last, int salary, double superAnnuation, String date) {
 		super(first, last, salary, superAnnuation, date);
+		super.setUpperLimit(Integer.valueOf(myResources.getString("tier.0.upperLimit")));
 		super.setLowerLimit(Integer.valueOf(myResources.getString("tier.0.lowerLimit")));
 		super.setTaxPerDollar(Integer.valueOf(myResources.getString("tier.0.tax.dollar")));
 	}

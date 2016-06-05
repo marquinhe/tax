@@ -18,6 +18,7 @@ public abstract class Payslip {
 	private String date; 
 	
 	private int lowerLimit; 
+	private int upperLimit; 
 	private int taxPerDollar; 
 	
 	
@@ -92,6 +93,14 @@ public abstract class Payslip {
 	public BigDecimal getGrossMontlyIncome(){
 		BigDecimal monthlyIncome= new BigDecimal (getSalary() /12);
 		return monthlyIncome.setScale(0, RoundingMode.HALF_UP);
+	}
+
+	public int getUpperLimit() {
+		return upperLimit;
+	}
+
+	public void setUpperLimit(int upperLimit) {
+		this.upperLimit = upperLimit;
 	}
 
 }
