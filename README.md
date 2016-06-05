@@ -32,14 +32,17 @@ Employee annual salary is 60,050, super rate is 9%, how much will this employee 
  
  
  #Solution
-  Implementation of Strategies for different tax tiers..
-  To extend the solution to other classes add extend _abstract_ __Payslip__ class and include logic in method __assignStrategy()__ in __EmployeeRowReader__.
+ 
+ Implementation of Strategies for different tax tiers..
+ To extend the solution to other classes add extend _abstract_ __Payslip__ class and include logic in method __assignStrategy()__ in __EmployeeRowReader__.
   
 #Build
   With maven installed simply run: __mvn clean package__
   
 #Run passing file location as argument
   run the following command: __java -jar target/payslip-jar-with-dependencies.jar__ input.csv
+  
   ie: 
-   java -jar payslip-jar-with-dependencies.jar ../input.csv
+  
+  java -jar payslip-jar-with-dependencies.jar ../input.csv
   
