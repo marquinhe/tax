@@ -2,37 +2,38 @@ package io.msalinas;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Date;
 import java.util.ResourceBundle;
 
-
 public abstract class Payslip {
-	
-	protected final ResourceBundle myResources =
-	  	      ResourceBundle.getBundle("ResourceBundle");
-	
-	private String first; 
-	private String last; 
-	private int salary; 
-	private double superAnnuation; 
-	private String date; 
-	
-	private int lowerLimit; 
-	private int upperLimit; 
-	private int taxPerDollar; 
-	
-	
-	public Payslip(String first, String last, int salary, double superAnnuation, String date) {
+
+	protected final ResourceBundle myResources = ResourceBundle
+			.getBundle("ResourceBundle");
+
+	private String first;
+	private String last;
+	private int salary;
+	private double superAnnuation;
+	private String date;
+
+	private int lowerLimit;
+	private int upperLimit;
+	private int taxBase;
+	private double taxPerDollar;
+
+	public Payslip(String first, String last, int salary,
+			double superAnnuation, String date) {
 		this.first = first;
 		this.last = last;
 		this.salary = salary;
 		this.date = date;
+		this.superAnnuation = superAnnuation;
 	}
-	
-	abstract BigDecimal calculateTax();
-	abstract BigDecimal totalNetIncome();
-	abstract BigDecimal totalSuperAnnuation();
 
+	abstract BigDecimal calculateTax();
+
+	abstract BigDecimal totalNetIncome();
+
+	abstract BigDecimal totalSuperAnnuation();
 
 	public String getFirst() {
 		return first;
@@ -82,17 +83,17 @@ public abstract class Payslip {
 		this.lowerLimit = lowerLimit;
 	}
 
-	public int getTaxPerDollar() {
+	public double getTaxPerDollar() {
 		return taxPerDollar;
 	}
 
-	public void setTaxPerDollar(int taxPerDollar) {
-		this.taxPerDollar = taxPerDollar;
+	public void setTaxPerDollar(double double1) {
+		this.taxPerDollar = double1;
 	}
-	
-	public BigDecimal getGrossMontlyIncome(){
-		BigDecimal monthlyIncome= new BigDecimal (getSalary() /12);
-		return monthlyIncome.setScale(0, RoundingMode.HALF_UP);
+
+	public BigDecimal getGrossMontlyIncome() {
+		BigDecimal monthlyIncome = new BigDecimal(getSalary() / 12);
+		return monthlyIncome.setScale(0, RoundingMode.DOWN);
 	}
 
 	public int getUpperLimit() {
@@ -101,6 +102,14 @@ public abstract class Payslip {
 
 	public void setUpperLimit(int upperLimit) {
 		this.upperLimit = upperLimit;
+	}
+
+	public int getTaxBase() {
+		return taxBase;
+	}
+
+	public void setTaxBase(int taxBase) {
+		this.taxBase = taxBase;
 	}
 
 }

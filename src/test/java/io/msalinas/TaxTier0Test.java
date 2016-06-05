@@ -10,7 +10,6 @@ public class TaxTier0Test {
 	
 	/**
 	 * Basic test for tier 0, salary <=18200 
-	 * Tax must be zero
 	 * 
 	 */
 	
